@@ -125,7 +125,7 @@ const SignupTest = ({ setLoginStatus }) => {
           <label>
             <span>E-mail</span>
             <input
-              placeholder="E-mail"
+              placeholder="Email@email.com"
               type="email"
               value={email}
               onChange={onChangeEmail}
@@ -135,7 +135,7 @@ const SignupTest = ({ setLoginStatus }) => {
           <label>
             <span>Username</span>
             <input
-              placeholder="Username"
+              placeholder="Enter username"
               type="text"
               value={name}
               onChange={onChangeName}
@@ -145,7 +145,7 @@ const SignupTest = ({ setLoginStatus }) => {
           <label>
             <span>Password</span>
             <input
-              placeholder="Password"
+              placeholder="Create password"
               type="password"
               value={password}
               onChange={onChangePassword}
@@ -153,7 +153,7 @@ const SignupTest = ({ setLoginStatus }) => {
           </label>
           <p className="message">{passwordMessage}</p>
           <label>
-            <span>Confirm pssword</span>
+            <span>Confirm password</span>
             <input
               placeholder="Confirm password"
               type="password"
