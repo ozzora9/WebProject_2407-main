@@ -12,6 +12,8 @@ import Header from "./components/Header";
 import Progress from "./components/Progress"; // 프로그레스 바 컴포넌트 import
 import PhotoGrid from "./components/PhotoGrid"; // 사진 그리드 컴포넌트 import
 import TestPage from "./components/TestPage"; // TestPage 컴포넌트 import
+import TestSignup from "./components/TestSignup";
+import TestLogin from "./components/TestLogin";
 
 const App = () => {
   const [photos, setPhotos] = useState([]);
@@ -100,6 +102,8 @@ const App = () => {
     <Router>
       <Header loginStatus={loginStatus} />
       <Routes>
+        <Route path="/TestSignUp" element={<TestSignup />} />
+        <Route path="/TestLogin" element={<TestLogin />} />
         <Route path="/" element={<FirstPage />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Select" element={<Select />} />

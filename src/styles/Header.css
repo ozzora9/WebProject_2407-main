@@ -14,8 +14,9 @@ nav {
 }
 div.logo a {
   text-decoration: none;
-  font-size: 44px;
+  font-size: 32px;
   font-weight: bolder;
+  text-shadow: 1px 0 0 BLACK;
   color: #343a40;
 }
 

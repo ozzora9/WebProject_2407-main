@@ -19,6 +19,8 @@ function FirstPage() {
       </div>
       <div className="move-font">
         <span>Anything, Everything</span>
+        <span>Anything, Everything</span>
+        <span>Anything, Everything</span>
       </div>
     </div>
   );
