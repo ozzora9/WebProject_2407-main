@@ -16,7 +16,6 @@ function Header({ loginStatus }) {
       </div>
       <div className="menuBar">
         <Link to="/home">Home</Link>
-        <Link to="/select">Select</Link>
         <span>|</span>
         <Link to="/mypage">MyPage</Link>
         <Link to="/logout">Logout</Link>

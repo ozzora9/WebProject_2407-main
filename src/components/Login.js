@@ -1,22 +1,28 @@
 import React, { useState } from "react";
-import { auth } from "../firebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom"; // React Router 사용
+import { Link } from "react-router-dom";
 
-function LoginPage({ setLoginStatus }) {
-  const [email, setEmail] = useState("");
+function Login({ setLoginStatus }) {
+  const [email, setEmail] = useState(""); // username -> email
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      setLoginStatus(true);
-      console.log("로그인 성공:", userCredential.user);
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }), // username -> email
+      });
+      const data = await response.json();
+      if (data.success) {
+        alert(data.message);
+        setLoginStatus(true);
+        console.log("로그인 성공:", data.user);
+      } else {
+        alert(data.message);
+      }
     } catch (error) {
       console.error("로그인 실패:", error);
       alert("로그인 실패: " + error.message);
@@ -29,19 +35,18 @@ function LoginPage({ setLoginStatus }) {
         <h1>Sleek</h1>
         <form className="login-form" onSubmit={handleLogin}>
           <label>
-            <span>email</span>
+            <span>Email</span> {/* Username -> Email */}
             <input
-              placeholder="email"
+              placeholder="Email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </label>
-          <div className="login-input-gap"></div>
           <label>
-            <span>password</span>
+            <span>Password</span>
             <input
-              placeholder="password"
+              placeholder="Password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -52,11 +57,11 @@ function LoginPage({ setLoginStatus }) {
         <div className="additional-links">
           <Link to="/forgot-password">Forgot Password?</Link>
           <span> | </span>
-          <Link to="/SignupPage">Sign Up</Link>
+          <Link to="/Signup">Sign Up</Link>
         </div>
       </div>
     </div>
   );
 }
 
-export default LoginPage;
+export default Login;

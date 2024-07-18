@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { auth, db } from "../firebaseConfig";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 
 const Signup = ({ setLoginStatus }) => {
@@ -13,7 +10,7 @@ const Signup = ({ setLoginStatus }) => {
   const [emailMessage, setEmailMessage] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
   const [passwordConfirmMessage, setPasswordConfirmMessage] = useState("");
-  const [nameMessage, setNameMessage] = useState(""); // 이름 필드에 대한 오류 메시지 상태 추가
+  const [nameMessage, setNameMessage] = useState("");
 
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isNameValid, setIsNameValid] = useState(false);
@@ -29,21 +26,21 @@ const Signup = ({ setLoginStatus }) => {
       isPasswordConfirmValid
     ) {
       try {
-        const userCredential = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        const user = userCredential.user;
-
-        await addDoc(collection(db, "users"), {
-          uid: user.uid,
-          name,
-          email,
+        const response = await fetch("http://localhost:5000/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username: name, email, password }),
         });
-
-        setLoginStatus(true); // 회원가입 성공 후 로그인 상태 설정
-        console.log("회원가입 성공:", user);
+        const data = await response.json();
+        if (data.success) {
+          alert(data.message);
+          setLoginStatus(true);
+          console.log("회원가입 성공:", data);
+        } else {
+          alert("회원가입 실패: " + data.message);
+        }
       } catch (error) {
         console.error("회원가입 실패:", error);
         alert("회원가입 실패: " + error.message);
@@ -54,14 +51,12 @@ const Signup = ({ setLoginStatus }) => {
   };
 
   const validateEmail = (email) => {
-    const emailRegExp =
-      /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
+    const emailRegExp = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
     return emailRegExp.test(email);
   };
 
   const validatePassword = (password) => {
-    const passwordRegExp =
-      /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+    const passwordRegExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^&*])(?=.*[0-9]).{8,}$/;
     return passwordRegExp.test(password);
   };
 
@@ -165,9 +160,7 @@ const Signup = ({ setLoginStatus }) => {
           <button type="submit">Sign Up</button>
         </form>
         <div className="additional-links">
-          <Link to="/forgot-password">Forgot Password?</Link>
-          <span> | </span>
-          <Link to="/LoginPage">LoginPage</Link>
+          <Link to="/Login">Already a member? Log In</Link>
         </div>
       </div>
     </div>

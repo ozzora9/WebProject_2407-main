@@ -1,7 +1,7 @@
 const styles = [
   {
     name: "Hippie Look",
-    image: "/assets/img/classic1.jpg",
+    image: "/assets/img/Hippie1.jpg",
     description: `히피 패션은 1960년대와 1970년대 미국에서 발생한 서브컬처에서 영향을 받은 스타일입니다. 
                     자연 친화적이고 평화로운 가치를 중시하는 이 스타일은 자유롭고 편안한 착용감이 특징입니다. 
                     넓고 편안한 플로럴 패턴의 드레스, 루즈한 티셔츠, 허밍버드 팬츠 등이 대표적입니다. 
@@ -9,7 +9,7 @@ const styles = [
   },
   {
     name: "Classic Look",
-    image: "/assets/img/classic2.jpg",
+    image: "/assets/img/classic1.jpg",
     description: `클래식 패션은 전통적이고 고전적인 스타일을 지향하는 스타일입니다.
                   우아하고 세련된 느낌을 주며 고급스러움을 중시하는 점이 특징입니다.
                   품질 높은 소재와 세밀한 디테일을 특징으로 합니다.
@@ -17,7 +17,7 @@ const styles = [
   },
   {
     name: "Feminine Look",
-    image: "/assets/img/classic2.jpg",
+    image: "/assets/img/Feminine1.jpg",
     description: `페미닌 패션은 여성성과 여성의 아름다움, 우아함을 강조하는 스타일입니다.
                   부드럽고 곡선미 넘치는 디자인의 여성다운 매력을 강조하는 스타일이 특징입니다.
                   핑크, 코랄, 민트 그린과 같은 따뜻하고 상큼한 컬러가 사용되며 면이나 실크와 같은 부드러운 소재가 주로 사용됩니다.
@@ -25,7 +25,7 @@ const styles = [
   },
   {
     name: "Sporty Look",
-    image: "/assets/img/classic2.jpg",
+    image: "/assets/img/Sporty1.jpg",
     description: `스포티 패션은 편안하면서도 기능적인 디자인을 가진 스타일입니다.
                   활동적인 라이프스타일을 반영하며 편안하면서도 스타일리시한 것이 특징입니다.
                   기능성 있는 소재와 현대적인 디자인을 중시하며 스포츠 활동을 위한 최적의 의상입니다.
@@ -33,7 +33,7 @@ const styles = [
   },
   {
     name: "Casual Look",
-    image: "/assets/img/classic2.jpg",
+    image: "/assets/img/Casual1.jpg",
     description: `캐주얼 패션은 일상적인 생활에서 편안하게 입을 수 있는 스타일입니다.
                   베이직한 디자인과 실용적인 의상이 많으며 편안하면서도 심플한 것이 특징입니다.
                   티셔츠나 셔츠, 청바지와 같은 기본적이고 일상적인 의상이 대표적입니다.
@@ -41,15 +41,15 @@ const styles = [
   },
   {
     name: "Funk Look",
-    image: "/assets/img/classic2.jpg",
+    image: "/assets/img/Funk1.jpg",
     description: `펑크 패션은 1970년대 영국에서 시작된 반항적인 사회문화와 펑크 음악을 반영한 스타일입니다.
                   도전적이고 진취적인 이미지를 가진 이 스타일은 전통적인 패션 규칙을 거스르는 독창적인 이미지가 특징입니다.
                   니가죽 재킷이나 체인 장식, 금속 장식 등 눈에 띄는 악세사리와 다양한 의상을 조합하는 스타일이 대표적입니다.
                   검은색, 청록색, 붉은색 등의 어둡고 진한 색상과 과감하고 강렬한 패턴이 들어간 소재가 주로 사용됩니다.`,
   },
   {
-    name: "TechWear Look",
-    image: "/assets/img/classic2.jpg",
+    name: "Techwear Look",
+    image: "/assets/img/Techwear1.jpg",
     description: `테크웨어 패션은 기술적인 혁신과 기능성을 중시하며 편안함을 결합한 스타일입니다.
                   최첨단 기술과 소재를 활용한 이 스타일은 실용적이면서도 스타일리시한 것이 특징입니다.
                   잘 늘어나는 소재나 특수한 직물을 사용해 활동성이 뛰어나고 편안하게 움직일 수 있는 스타일이 대표적입니다.
@@ -57,7 +57,7 @@ const styles = [
   },
   {
     name: "Blokecore Look",
-    image: "/assets/img/classic2.jpg",
+    image: "/assets/img/Blokecore1.jpg",
     description: `블록코어 패션은 도시적이고 현대적인 디자인이 돋보이는 스타일입니다.
                   단순하고 깔끔한 디자인을 가진 이 스타일은 복잡하지 않으면서도 세련된 디테일이 돋보이는 것이 특징입니다.
                   축구나 농구와 같은 스포츠 유니폼을 일상복과 결합하여 코디하는 것이 대표적입니다.
@@ -65,7 +65,7 @@ const styles = [
   },
   {
     name: "Balletcore Look",
-    image: "/assets/img/classic2.jpg",
+    image: "/assets/img/Balletcore1.jpg",
     description: `발레코어 패션은 발레의 우아하고 섬세한 감성을 현대적인 패션에 접목한 스타일입니다.
                   우아함과 여성스러움을 가진 이 스타일은 발레의 세련되고 아름다움을을 표현하는 것이 특징입니다.
                   리본으로 포인트를 주는 경우가 많으며 플라워 패턴이나 프릴 디테일이 돋보이는 로맨틱한 느낌의 의상이 대표적입니다.
@@ -73,7 +73,7 @@ const styles = [
   },
   {
     name: "Cottagecore Look",
-    image: "/assets/img/classic2.jpg",
+    image: "/assets/img/Cottagecore1.jpg",
     description: `코티지코어 패션은 자연과 농촌 생활을 기반으로 한 라이프스타일 스타일입니다.
                   자연적인 환경에서 영감을 받은 이 스타일은 자연과 농촌 생활의 로맨틱하고 편안한 느낌을 주는 것이 특징입니다.
                   편안하고 루즈한 핏의 옷과 다채로운 레이어드 스타일을 활용해 다양한 스타일링을 구성하는 것이 대표적입니다.

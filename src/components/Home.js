@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from "../data/styles";
 
 function Home({ value, onChange }) {
   return (
@@ -20,7 +21,6 @@ function Home({ value, onChange }) {
             placeholder="Search for any trend or style"
             value={value}
             onChange={onChange}
-            // 왜잇는지몰겟다
           />
           <button className="search-btn" type="submit">
             <img src="/assets/img/search-icon.svg" alt="search-icon" />
@@ -31,6 +31,13 @@ function Home({ value, onChange }) {
         <Link to="/select" className="home-button">
           <button className="home-button-style">Make your Style</button>
         </Link>
+      </div>
+      <div className="styles-list">
+        {styles.map((style, index) => (
+          <Link key={index} to={`/result/${style.name}`} className="style-link">
+            {style.name}
+          </Link>
+        ))}
       </div>
     </div>
   );

@@ -9,11 +9,11 @@ function FirstPage() {
           <Link to="/">Sleek</Link>
         </div>
       </div>
-      <div First-button-area>
-        <Link to="/LoginPage" className="First-button-area">
+      <div first-button-area={true}>
+        <Link to="/Login" className="first-button-area">
           <button className="first-button-style">LOG IN</button>
         </Link>
-        <Link to="/SignupPage" className="First-button-area">
+        <Link to="/Signup" className="first-button-area">
           <button className="first-button-style">SIGN UP</button>
         </Link>
       </div>
