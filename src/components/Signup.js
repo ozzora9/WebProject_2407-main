@@ -1,181 +1,177 @@
-// // import React, { useState } from "react";
-// // import { auth, db } from "../firebaseConfig";
-// // import { createUserWithEmailAndPassword } from "firebase/auth";
-// // import { collection, addDoc } from "firebase/firestore";
-// // import "../styles/Login.css";
-// // import "./Home.css";
+import React, { useState } from "react";
+import { auth, db } from "../firebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
-// // function SignupPage({ setLoginStatus }) {
-// //   const [email, setEmail] = useState("");
-// //   const [password, setPassword] = useState("");
+const SignupTest = ({ setLoginStatus }) => {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
-// //   const handleSignup = async (e) => {
-// //     e.preventDefault();
-// //     try {
-// //       const userCredential = await createUserWithEmailAndPassword(
-// //         auth,
-// //         email,
-// //         password
-// //       );
-// //       const user = userCredential.user;
+  const [emailMessage, setEmailMessage] = useState("");
+  const [passwordMessage, setPasswordMessage] = useState("");
+  const [passwordConfirmMessage, setPasswordConfirmMessage] = useState("");
+  const [nameMessage, setNameMessage] = useState(""); // 이름 필드에 대한 오류 메시지 상태 추가
 
-// //       // Firestore에 사용자 정보 저장
-// //       await addDoc(collection(db, "users"), {
-// //         uid: user.uid,
-// //         email: email,
-// //         password: password, // 실제 프로젝트에서는 비밀번호를 암호화하여 저장해야 합니다.
-// //       });
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isNameValid, setIsNameValid] = useState(false);
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const [isPasswordConfirmValid, setIsPasswordConfirmValid] = useState(false);
 
-// //       setLoginStatus(true);
-// //       console.log("회원가입 성공:", user);
-// //     } catch (error) {
-// //       console.error("회원가입 실패:", error);
-// //       alert("회원가입 실패: " + error.message);
-// //     }
-// //   };
-
-// //   return (
-// //     <div className="login-page">
-// //       <div className="login-float-container">
-// //         <h1>Sleek</h1>
-// //         <form className="login-form" onSubmit={handleSignup}>
-// //           <label>
-// //             <span>email</span>
-// //             <input
-// //               placeholder="Email"
-// //               type="email"
-// //               value={email}
-// //               onChange={(e) => setEmail(e.target.value)}
-// //             />
-// //           </label>
-// //           <label>
-// //             <span>password</span>
-// //             <input
-// //               placeholder="PW"
-// //               type="password"
-// //               value={password}
-// //               onChange={(e) => setPassword(e.target.value)}
-// //             />
-// //           </label>
-// //           <button type="submit">Signup</button>
-// //         </form>
-// //       </div>
-// //     </div>
-// //   );
-// // }
-
-// // export default SignupPage;
-// import React, { useState } from "react";
-// import axios from "axios";
-// import "../styles/Login.css";
-// import "./Home.css";
-
-// function SignupPage({ setLoginStatus }) {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-
-//   const handleSignup = async (e) => {
-//     e.preventDefault();
-//     try {
-//       // MySQL로 회원가입 정보 전송
-//       const response = await axios.post("http://localhost:5001/api/signup", {
-//         email,
-//         password,
-//       });
-//       console.log("회원가입 성공:", response.data);
-//       setLoginStatus(true); // 로그인 상태 변경
-//     } catch (error) {
-//       console.error("회원가입 실패:", error);
-//       alert("회원가입 실패: " + error.message);
-//     }
-//   };
-
-//   return (
-//     <div className="login-page">
-//       <div className="login-float-container">
-//         <h1>Sleek</h1>
-//         <form className="login-form" onSubmit={handleSignup}>
-//           <label>
-//             <span>email</span>
-//             <input
-//               placeholder="Email"
-//               type="email"
-//               value={email}
-//               onChange={(e) => setEmail(e.target.value)}
-//             />
-//           </label>
-//           <label>
-//             <span>password</span>
-//             <input
-//               placeholder="PW"
-//               type="password"
-//               value={password}
-//               onChange={(e) => setPassword(e.target.value)}
-//             />
-//           </label>
-//           <button type="submit">Signup</button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default SignupPage;
-
-// SignupPage.js
-
-  import React, { useState } from 'react';
-  import axios from 'axios';
-  import '../styles/Login.css';
-  import './Home.css';
-
-  function SignupPage({ setLoginStatus }) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleSignup = async (e) => {
-      e.preventDefault();
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    if (
+      isEmailValid &&
+      isNameValid &&
+      isPasswordValid &&
+      isPasswordConfirmValid
+    ) {
       try {
-        const response = await axios.post('http://localhost:5001/api/signup', {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
           email,
-          password,
-        });
-        console.log('회원가입 성공:', response.data);
-        setLoginStatus(true); // 로그인 상태 변경
-      } catch (error) {
-        console.error('회원가입 실패:', error);
-        alert('회원가입 실패: ' + error.message);
-      }
-    };
+          password
+        );
+        const user = userCredential.user;
 
-    return (
-      <div className="login-page">
-        <div className="login-float-container">
-          <h1>Sleek</h1>
-          <form className="login-form" onSubmit={handleSignup}>
-            <label>
-              <span>email</span>
-              <input
-                placeholder="Email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </label>
-            <label>
-              <span>password</span>
-              <input
-                placeholder="PW"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
-            <button type="submit">Signup</button>
-          </form>
+        await addDoc(collection(db, "users"), {
+          uid: user.uid,
+          name,
+          email,
+        });
+
+        setLoginStatus(true); // 회원가입 성공 후 로그인 상태 설정
+        console.log("회원가입 성공:", user);
+      } catch (error) {
+        console.error("회원가입 실패:", error);
+        alert("회원가입 실패: " + error.message);
+      }
+    } else {
+      alert("입력한 정보를 다시 확인해주세요");
+    }
+  };
+
+  const validateEmail = (email) => {
+    const emailRegExp =
+      /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
+    return emailRegExp.test(email);
+  };
+
+  const validatePassword = (password) => {
+    const passwordRegExp =
+      /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+    return passwordRegExp.test(password);
+  };
+
+  const validateName = (name) => {
+    return name.length >= 2 && name.length <= 5;
+  };
+
+  const onChangeEmail = (e) => {
+    const currentEmail = e.target.value;
+    setEmail(currentEmail);
+    if (!validateEmail(currentEmail)) {
+      setEmailMessage("올바르지 않은 형식입니다");
+      setIsEmailValid(false);
+    } else {
+      setEmailMessage("");
+      setIsEmailValid(true);
+    }
+  };
+
+  const onChangePassword = (e) => {
+    const currentPassword = e.target.value;
+    setPassword(currentPassword);
+    if (!validatePassword(currentPassword)) {
+      setPasswordMessage("숫자+영문자+특수문자 조합 8자리 이상 입력해주세요");
+      setIsPasswordValid(false);
+    } else {
+      setPasswordMessage("");
+      setIsPasswordValid(true);
+    }
+  };
+
+  const onChangeName = (e) => {
+    const currentName = e.target.value;
+    setName(currentName);
+    if (!validateName(currentName)) {
+      setNameMessage("2글자 이상 5글자 이내로 입력해주세요");
+      setIsNameValid(false);
+    } else {
+      setNameMessage("");
+      setIsNameValid(true);
+    }
+  };
+
+  const onChangePasswordConfirm = (e) => {
+    const currentPasswordConfirm = e.target.value;
+    setPasswordConfirm(currentPasswordConfirm);
+    if (password !== currentPasswordConfirm) {
+      setPasswordConfirmMessage("비밀번호가 일치하지 않습니다");
+      setIsPasswordConfirmValid(false);
+    } else {
+      setPasswordConfirmMessage("");
+      setIsPasswordConfirmValid(true);
+    }
+  };
+
+  return (
+    <div className="login-page">
+      <div className="login-float-container">
+        <h1>Sleek</h1>
+        <form className="login-form" onSubmit={handleSignup}>
+          <label>
+            <span>E-mail</span>
+            <input
+              placeholder="E-mail"
+              type="email"
+              value={email}
+              onChange={onChangeEmail}
+            />
+          </label>
+          <p className="message">{emailMessage}</p>
+          <label>
+            <span>Username</span>
+            <input
+              placeholder="Username"
+              type="text"
+              value={name}
+              onChange={onChangeName}
+            />
+          </label>
+          <p className="message">{nameMessage}</p>
+          <label>
+            <span>Password</span>
+            <input
+              placeholder="Password"
+              type="password"
+              value={password}
+              onChange={onChangePassword}
+            />
+          </label>
+          <p className="message">{passwordMessage}</p>
+          <label>
+            <span>Confirm pssword</span>
+            <input
+              placeholder="Confirm password"
+              type="password"
+              value={passwordConfirm}
+              onChange={onChangePasswordConfirm}
+            />
+          </label>
+          <p className="message">{passwordConfirmMessage}</p>
+          <button type="submit">Sign Up</button>
+        </form>
+        <div className="additional-links">
+          <Link to="/forgot-password">Forgot Password?</Link>
+          <span> | </span>
+          <Link to="/LoginPage">LoginPage</Link>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+};
 
-  export default SignupPage;
+export default SignupTest;

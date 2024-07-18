@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { auth } from "../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import "../styles/Login.css";
-import "./Home.css";
+import { Link } from "react-router-dom"; // React Router 사용
 
 function LoginPage({ setLoginStatus }) {
   const [email, setEmail] = useState("");
@@ -32,7 +31,7 @@ function LoginPage({ setLoginStatus }) {
           <label>
             <span>email</span>
             <input
-              placeholder="Email"
+              placeholder="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -41,7 +40,7 @@ function LoginPage({ setLoginStatus }) {
           <label>
             <span>password</span>
             <input
-              placeholder="PW"
+              placeholder="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -49,6 +48,11 @@ function LoginPage({ setLoginStatus }) {
           </label>
           <button type="submit">Login</button>
         </form>
+        <div className="additional-links">
+          <Link to="/forgot-password">Forgot Password?</Link>
+          <span> | </span>
+          <Link to="/SignupPage">Sign Up</Link>
+        </div>
       </div>
     </div>
   );

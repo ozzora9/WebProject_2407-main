@@ -4,7 +4,7 @@
   height: calc(100% - 66px);
 }
 
-.image-section {
+.type-image {
   flex: 1 1;
   overflow: hidden;
   display: flex;
@@ -12,7 +12,7 @@
   justify-content: center;
 }
 
-.image-section img {
+.type-image img {
   max-width: 90%;
   max-height: 90%;
   object-fit: cover;

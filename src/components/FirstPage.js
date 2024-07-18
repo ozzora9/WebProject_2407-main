@@ -10,10 +10,10 @@ function FirstPage() {
         </div>
       </div>
       <div First-button-area>
-        <Link to="/Login" className="First-button-area">
-          <button className="first-button-style">SIGN IN</button>
+        <Link to="/LoginPage" className="First-button-area">
+          <button className="first-button-style">LOG IN</button>
         </Link>
-        <Link to="/Signup" className="First-button-area">
+        <Link to="/SignupPage" className="First-button-area">
           <button className="first-button-style">SIGN UP</button>
         </Link>
       </div>

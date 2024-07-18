@@ -1,5 +1,4 @@
 @import url("./styles/Header.css");
-@import url("./components/Home.css");
 @font-face {
   font-family: "BookkMyungjo-Bd";
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2")
@@ -124,10 +123,9 @@ body {
   border-style: solid;
   cursor: pointer;
   transition: transform 0.3s, background-color 0.3s;
-}
-
-.home-button-style:hover {
-  transform: scale(1.1);
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .first-page {
@@ -160,13 +158,17 @@ body {
   white-space: nowrap;
   flex-grow: 1;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .first-logo a {
   color: white;
   text-decoration: none;
   font-size: 196px;
+}
+
+.first-button-area {
+  padding: 0 0 0 0;
 }
 
 .first-button-style {
@@ -210,4 +212,97 @@ body {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 66px);
+  justify-content: center;
+  align-items: center;
+  padding: 0 64px;
+}
+
+.login-float-container {
+  padding: 32px 48px 40px 48px;
+  border-radius: 16px;
+  width: 430px;
+  background-color: white;
+  white-space: nowrap;
+
+  & h1 {
+    text-align: center;
+    margin: 0 0 32px 0;
+    user-select: none;
+    color: #343a40;
+  }
+
+  & label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    & span {
+      font-family: "BookkMyungjo-Bd";
+      font-weight: 900;
+      display: inline-block;
+      width: 32px;
+      user-select: none;
+    }
+
+    & input {
+      transition: all 150ms;
+      font-family: "BookkMyungjo-Bd";
+      /* width: 240px; */
+      font-size: 16px;
+      padding: 8px 12px;
+      /* border: 2px solid #e8e8e8;
+      border-radius: 4px; */
+      border: 0;
+      background-color: transparent;
+      border-bottom: 2px solid #c0c0c0;
+      outline: none;
+
+      &:hover {
+        border-color: #808080;
+      }
+
+      &:focus {
+        border-color: var(--BLACK);
+        padding: 12px 12px;
+      }
+    }
+  }
+
+  & button {
+    font-family: "BookkMyungjo-Bd";
+    font-size: 16px;
+    height: 48px;
+    margin-top: 16px;
+
+    border-radius: 8px;
+    font-weight: 900;
+
+    border: 0;
+    color: #f8f9fa;
+    background-color: #808080;
+    transition: all 150ms;
+    scale: 1.02;
+
+    &:hover {
+      background-color: var(--BLACK);
+      scale: 1.045;
+    }
+  }
+}
+
+.additional-links {
+  display: flex;
+  justify-content: center;
+  padding: 20px 20px 0;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
 }
