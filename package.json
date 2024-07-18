@@ -7,7 +7,10 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
     "firebase": "^10.12.3",
+    "mysql": "^2.18.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-native-text-ticker": "^1.14.0",
@@ -45,5 +48,10 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

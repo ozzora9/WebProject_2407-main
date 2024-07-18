@@ -15,7 +15,7 @@ const TestPage = ({ onSubmit }) => {
   // 서버에서 랜덤 사진 가져오기
   const fetchPhotos = async (excludedIds) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/random-photos', { excluded_ids: excludedIds });
+      const response = await axios.post('http://localhost:5001/api/random-photos', { excluded_ids: excludedIds });
       setPhotos(response.data);
     } catch (error) {
       console.error('Error fetching photos:', error);
